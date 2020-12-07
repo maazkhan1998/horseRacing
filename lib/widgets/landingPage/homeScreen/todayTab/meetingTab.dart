@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 class MeetingTab extends StatefulWidget {
   @override
@@ -17,15 +18,15 @@ class _MeetingTabState extends State<MeetingTab> {
           ),
           title: Text('United Kingdom',
           style: TextStyle(
-            color:Colors.black,fontSize: 18,fontWeight:FontWeight.bold
+            color:Colors.black,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight:FontWeight.bold
           ),),
           trailing: Container(
-            height:30,width:30,color:Colors.blue[900],
+            height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
               child: Icon(Icons.add,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:10),
+        ),SizedBox(height:ScreenUtil().setHeight(10)),
         ListTile(
           tileColor: Colors.white,
           leading: CircleAvatar(
@@ -33,19 +34,19 @@ class _MeetingTabState extends State<MeetingTab> {
           ),
           title: Text('England',
           style: TextStyle(
-            color:Colors.black,fontSize: 18,fontWeight:FontWeight.bold
+            color:Colors.black,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight:FontWeight.bold
           ),),
           trailing: Container(
-            height:30,width:30,color:Colors.blue[900],
+            height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
               child: Icon(Icons.remove,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:5),
+        ),SizedBox(height:ScreenUtil().setHeight(5)),
         Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(
-            vertical: 5,horizontal:10
+            vertical: ScreenUtil().setHeight(5),horizontal:10
           ),
           color:Colors.white,
           child: Column(
@@ -55,7 +56,7 @@ class _MeetingTabState extends State<MeetingTab> {
                 horizontal:15
               ),
               alignment: Alignment.center,
-              height:50,decoration: BoxDecoration(
+              height:ScreenUtil().setHeight(50),decoration: BoxDecoration(
                 color: Colors.grey[300].withOpacity(0.5),
                 borderRadius: BorderRadius.circular(10)
               ),
@@ -65,43 +66,43 @@ class _MeetingTabState extends State<MeetingTab> {
                 children: [
                   Text('Newcastle',
                   style:TextStyle(
-                    color:Colors.blue,fontWeight: FontWeight.bold,fontSize: 16
+                    color:Colors.blue,fontWeight: FontWeight.bold,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)
                   )),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(width:30,height:30,alignment: Alignment.center,
+                      Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                       child: Text('F',
                       style: TextStyle(
-                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
+                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                       ),)),
-                      Container(width:30,height:30,alignment: Alignment.center,
+                      Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border:Border.all(
-                          width: 2,color:Colors.grey,
+                          width: ScreenUtil().setWidth(2),color:Colors.grey,
                         )
                       ),
                       child: Text('H',
                       style: TextStyle(
-                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
-                      ),)),SizedBox(width:10),
+                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
+                      ),)),SizedBox(width:ScreenUtil().setWidth(10)),
                       Text('2 m',
                       style:TextStyle(
-                        color: Colors.blue,fontWeight: FontWeight.bold,fontSize:16
+                        color: Colors.blue,fontWeight: FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                       ))
                     ],
                   )
                 ],
               ),
-              ),SizedBox(height:10),
+              ),SizedBox(height:ScreenUtil().setHeight(10)),
               Container(width: double.infinity,
               padding: EdgeInsets.symmetric(
                 horizontal:15
               ),
               alignment: Alignment.center,
-              height:50,decoration: BoxDecoration(
+              height:ScreenUtil().setHeight(50),decoration: BoxDecoration(
                 color: Colors.grey[300].withOpacity(0.5),
                 borderRadius: BorderRadius.circular(10)
               ),
@@ -111,37 +112,37 @@ class _MeetingTabState extends State<MeetingTab> {
                 children: [
                   Text('Wolverhampton',
                   style:TextStyle(
-                    color:Colors.blue,fontWeight: FontWeight.bold,fontSize: 16
+                    color:Colors.blue,fontWeight: FontWeight.bold,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)
                   )),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(width:30,height:30,alignment: Alignment.center,
+                      Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                       child: Text('F',
                       style: TextStyle(
-                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
+                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                       ),)),
-                      Container(width:30,height:30,alignment: Alignment.center,
+                      Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border:Border.all(
-                          width: 2,color:Colors.grey,
+                          width: ScreenUtil().setWidth(2),color:Colors.grey,
                         )
                       ),
                       child: Text('H',
                       style: TextStyle(
-                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
-                      ),)),SizedBox(width:10),
+                        color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
+                      ),)),SizedBox(width:ScreenUtil().setWidth(10)),
                       Text('17 m',
                       style:TextStyle(
-                        color: Colors.blue,fontWeight: FontWeight.bold,fontSize:16
+                        color: Colors.blue,fontWeight: FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                       ))
                     ],
                   )
                 ],
               ),
-              ),SizedBox(height:15),
+              ),SizedBox(height:ScreenUtil().setHeight(15)),
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -149,7 +150,7 @@ class _MeetingTabState extends State<MeetingTab> {
                 ),
                 child: Column(
                                   children:[ Container(
-                    width: double.infinity,height:150,
+                    width: double.infinity,height:ScreenUtil().setHeight(150),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),topRight: Radius.circular(20)
@@ -161,11 +162,11 @@ class _MeetingTabState extends State<MeetingTab> {
                   ),
                   Padding(
                     padding:EdgeInsets.symmetric(
-                      horizontal:10,vertical:20,
+                      horizontal:10,vertical:ScreenUtil().setHeight(20),
                     ),
                     child: Text('Davis Fellas : Race Review of Happy Valley - 8th Novemeber 2020',
                     style:TextStyle(
-                      color:Colors.blue,fontSize:16,fontWeight: FontWeight.bold
+                      color:Colors.blue,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.bold
                     )),
                   )
                                   ]

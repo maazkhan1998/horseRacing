@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/screens/racingScreen/playerScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -16,108 +17,108 @@ class _CardTabState extends State<CardTab> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 20,
-          width: devWidth,
+          height: ScreenUtil().setHeight(20),
+          width: ScreenUtil().setWidth(411),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 alignment: Alignment.center,
-                height: 20,
-                width: devWidth / 6,
+                height: ScreenUtil().setHeight(20),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.blue[900],
                 child: Text(
                   'Number',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 alignment: Alignment.center,
-                height: 20,
-                width: devWidth / 6,
+                height: ScreenUtil().setHeight(20),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.white,
                 child: Text(
                   'Name',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.blue[900],
-                      fontSize: 12,
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 alignment: Alignment.center,
-                height: 20,
-                width: devWidth / 6,
+                height: ScreenUtil().setHeight(20),
+                width:ScreenUtil().setWidth(411/6),
                 color: Colors.blue[900],
                 child: Text(
                   'Draw',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 alignment: Alignment.center,
-                height: 20,
-                width: devWidth / 6,
+                height: ScreenUtil().setHeight(20),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.white,
                 child: Text(
                   'Age',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.blue[900],
-                      fontSize: 12,
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 alignment: Alignment.center,
-                height: 20,
-                width: devWidth / 6,
+                height: ScreenUtil().setHeight(20),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.blue[900],
                 child: Text(
                   'Weight',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 alignment: Alignment.center,
-                height: 20,
-                width: devWidth / 6,
+                height: ScreenUtil().setHeight(20),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.white,
                 child: Text(
                   'Rating',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.blue[900],
-                      fontSize: 12,
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               )
             ],
           ),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: ScreenUtil().setHeight(5)),
         Container(
           color: Colors.white,
-          height: 70,
+          height: ScreenUtil().setHeight(70),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -139,13 +140,13 @@ class _CardTabState extends State<CardTab> {
                                 style: TextStyle(
                                     color: Colors.blue[900],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 28)),
+                                    fontSize: ScreenUtil().setSp(28,allowFontScalingSelf: true))),
                             TextSpan(
                                 text: '(4)',
                                 style: TextStyle(
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 10))
+                                    fontSize: ScreenUtil().setSp(10,allowFontScalingSelf: true)))
                           ]),
                         )
                       ],
@@ -166,16 +167,16 @@ class _CardTabState extends State<CardTab> {
                                 style: TextStyle(
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 8))
+                                    fontSize: ScreenUtil().setSp(8,allowFontScalingSelf: true)))
                           ]),
                         ),
-                        SizedBox(height: 2),
+                        SizedBox(height: ScreenUtil().setHeight(2)),
                         Text('Tapit (USA) Los Ojitos (USA) by Mr Greelay (USA)',
                             style: TextStyle(
                                 color: Colors.blue[900],
                                 fontWeight: FontWeight.bold,
-                                fontSize: 8)),
-                        SizedBox(height: 2),
+                                fontSize: ScreenUtil().setSp(8,allowFontScalingSelf: true))),
+                        SizedBox(height: ScreenUtil().setHeight(2)),
                         RichText(
                           text: TextSpan(children: [
                             TextSpan(
@@ -183,21 +184,21 @@ class _CardTabState extends State<CardTab> {
                                 style: TextStyle(
                                     color: Colors.blue[900],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 8)),
+                                    fontSize: ScreenUtil().setSp(8,allowFontScalingSelf: true))),
                             TextSpan(
                                 text: '47(1-40-3)',
                                 style: TextStyle(
                                     color: Colors.blue[900],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 6))
+                                    fontSize:  ScreenUtil().setSp(6,allowFontScalingSelf: true)))
                           ]),
                         ),
-                        SizedBox(height: 2),
+                        SizedBox(height: ScreenUtil().setHeight(2)),
                         Text('Mr Abdul Hussain Abdul Hussain Alhermi',
                             style: TextStyle(
                                 color: Colors.blue[900],
                                 fontWeight: FontWeight.bold,
-                                fontSize: 8))
+                                fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true)))
                       ],
                     ),
                     Row(
@@ -211,25 +212,25 @@ class _CardTabState extends State<CardTab> {
                                 style: TextStyle(
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 8)),
-                            SizedBox(height: 2),
+                                    fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true))),
+                            SizedBox(height: ScreenUtil().setHeight(2)),
                             Text('59.0 KGs',
                                 style: TextStyle(
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.w900,
-                                    fontSize: 8)),
-                            SizedBox(height: 2),
+                                    fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true))),
+                            SizedBox(height: ScreenUtil().setHeight(2)),
                             Text('Tadhg 0 Shea',
                                 style: TextStyle(
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 8)),
-                            SizedBox(height: 2),
+                                    fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true))),
+                            SizedBox(height: ScreenUtil().setHeight(2)),
                             Text('47(1-40-3)',
                                 style: TextStyle(
                                     color: Colors.blue[900],
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 8))
+                                    fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true)))
                           ],
                         )
                       ],
@@ -245,38 +246,38 @@ class _CardTabState extends State<CardTab> {
                     'LifeTime: 1|0-0-0| D:D|0-0-0| T:0|0-0-0|  AW: 1|0-0-0 D5:0|1-0-0|  UAE 0(0-0-0)',
                     style: TextStyle(
                         color: Colors.blue[900],
-                        fontSize: 8,
+                        fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold),
                   ),
                   Row(
                     children: [
                       Container(
-                        height: 10,
-                        width: 10,
+                        height: ScreenUtil().setHeight(10),
+                        width: ScreenUtil().setWidth(10),
                         decoration: BoxDecoration(
                             color: Colors.blue[900],
                             borderRadius: BorderRadius.circular(2)),
                       ),
-                      SizedBox(width: 2),
+                      SizedBox(width: ScreenUtil().setWidth(2)),
                       Container(
-                        height: 10,
-                        width: 10,
+                        height: ScreenUtil().setHeight(10),
+                        width: ScreenUtil().setWidth(10),
                         decoration: BoxDecoration(
                             color: Colors.yellow,
                             borderRadius: BorderRadius.circular(2)),
                       ),
-                      SizedBox(width: 2),
+                      SizedBox(width: ScreenUtil().setWidth(2)),
                       Container(
-                        height: 10,
-                        width: 10,
+                        height: ScreenUtil().setHeight(10),
+                        width: ScreenUtil().setWidth(10),
                         decoration: BoxDecoration(
                             color: Colors.black87,
                             borderRadius: BorderRadius.circular(2)),
                       ),
-                      SizedBox(width: 2),
+                      SizedBox(width: ScreenUtil().setWidth(2)),
                       Container(
-                        height: 10,
-                        width: 10,
+                        height: ScreenUtil().setHeight(10),
+                        width: ScreenUtil().setWidth(10),
                         decoration: BoxDecoration(
                             color: Colors.green,
                             borderRadius: BorderRadius.circular(2)),
@@ -286,14 +287,14 @@ class _CardTabState extends State<CardTab> {
                   Text('TOTAL AED:00.00',
                       style: TextStyle(
                           color: Colors.blue[900],
-                          fontSize: 8,
+                          fontSize:  ScreenUtil().setSp(8,allowFontScalingSelf: true),
                           fontWeight: FontWeight.bold))
                 ],
               )
             ],
           ),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: ScreenUtil().setHeight(5)),
         FittedBox(
             child: DataTable(
                 headingRowColor: MaterialStateProperty.resolveWith<Color>(
@@ -310,7 +311,7 @@ class _CardTabState extends State<CardTab> {
                 'Date',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize:  ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -318,7 +319,7 @@ class _CardTabState extends State<CardTab> {
                 'Crs',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -326,7 +327,7 @@ class _CardTabState extends State<CardTab> {
                 'Dist',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -334,7 +335,7 @@ class _CardTabState extends State<CardTab> {
                 'TC',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -342,7 +343,7 @@ class _CardTabState extends State<CardTab> {
                 'Types',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -350,7 +351,7 @@ class _CardTabState extends State<CardTab> {
                 'Dts',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -358,7 +359,7 @@ class _CardTabState extends State<CardTab> {
                 'Time',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -366,7 +367,7 @@ class _CardTabState extends State<CardTab> {
                 'Jocky',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -374,7 +375,7 @@ class _CardTabState extends State<CardTab> {
                 'Wgt',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -382,7 +383,7 @@ class _CardTabState extends State<CardTab> {
                 'PP',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -390,7 +391,7 @@ class _CardTabState extends State<CardTab> {
                 'Les',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -398,7 +399,7 @@ class _CardTabState extends State<CardTab> {
                 'RS',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -406,7 +407,7 @@ class _CardTabState extends State<CardTab> {
                 'BLBy',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -414,7 +415,7 @@ class _CardTabState extends State<CardTab> {
                 'Kgs',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -422,7 +423,7 @@ class _CardTabState extends State<CardTab> {
                 'Draw',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               ))
             ],
@@ -432,105 +433,105 @@ class _CardTabState extends State<CardTab> {
                   DataCell(Text(
                     '02Aug 19',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.blue[900]),
                   )),
                   DataCell(Text(
                     'Wob(A)',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '\$400',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '5',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     'Novice',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '2:40:70',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     'J Gordan',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.blue[900]),
                   )),
                   DataCell(Text(
                     '58',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '5',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '15:25',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '5',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     'Trueshan',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.blue[900]),
                   )),
                   DataCell(Text(
                     '58',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   )),
                   DataCell(Text(
                     '9',
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700]),
                   ))

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/main.dart';
 import 'package:mks_racing/widgets/landingPage/racingScreen/cardTab.dart';
 import 'package:mks_racing/widgets/landingPage/racingScreen/drawTab.dart';
@@ -110,13 +111,13 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
               ,
             ),
           ),
-        ),SizedBox(height:10),
+        ),SizedBox(height:ScreenUtil().setHeight(10)),
         Container(
-              height:30,width:double.infinity,
+              height:ScreenUtil().setHeight(30),width:double.infinity,
               child: Row(
                 children: [
                   Container(
-                    height:30,width:devWidth/3,
+                    height:ScreenUtil().setHeight(30),width:devWidth/3,
                     color:Colors.blue[900],
                     alignment: Alignment.center,
                     child: Text('TB (Horse Kind)',
@@ -126,7 +127,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   ),),
                   ),
                   Container(
-                    height:30,width:devWidth/3,
+                    height:ScreenUtil().setHeight(30),width:devWidth/3,
                     color:Colors.white,
                     alignment: Alignment.center,
                     child: Text('Race Kind',
@@ -136,7 +137,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   textAlign: TextAlign.center,),
                   ),
                   Container(
-                    height:30,width:devWidth/3,
+                    height:ScreenUtil().setHeight(30),width:devWidth/3,
                     color:Colors.blue[900],
                     alignment: Alignment.center,
                     child: Text('Race Type',
@@ -147,14 +148,14 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   ),
                 ],
               ),
-            ),SizedBox(height:15),
+            ),SizedBox(height:ScreenUtil().setHeight(15)),
             Container(
-              height:70,width:double.infinity,
+              height:ScreenUtil().setHeight(74),width:double.infinity,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('assets/Artboard 30.png',height:70,width:80),
+                  Image.asset('assets/Artboard 30.png',height:ScreenUtil().setHeight(70),width:80),
                   Text('Race Name',
                   style:TextStyle(
                     color:Colors.blue[900],fontSize: 26,fontWeight: FontWeight.w500
@@ -162,7 +163,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   CircularPercentIndicator(
                     percent: 0.7,
                     backgroundColor: Colors.red,
-                    radius: 49,
+                    radius: ScreenUtil().setHeight(49),
                     center: Text('1900 dar',
                     style: TextStyle(
                       fontSize:9,color:Colors.grey,fontWeight: FontWeight.w500
@@ -176,9 +177,9 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   )],
               ),
             ),
-            SizedBox(height:5),
+            SizedBox(height:ScreenUtil().setHeight(5)),
             Container(
-              height:20,width:double.infinity,
+              height:ScreenUtil().setHeight(20),width:double.infinity,
               color:Colors.blue[900],
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:Row(
@@ -190,7 +191,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   )),
                   Container(
                     alignment: Alignment.center,
-                    height:15,width:15,
+                    height:ScreenUtil().setHeight(15),width:15,
                     decoration: BoxDecoration(
                       color:Colors.white,borderRadius:BorderRadius.circular(2)
                     ),
@@ -198,10 +199,10 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   )
                 ],
               )
-            ),SizedBox(height:5),
+            ),SizedBox(height:ScreenUtil().setHeight(5)),
             Container(
               alignment: Alignment.center,
-              height:55,width:devWidth,
+              height:ScreenUtil().setHeight(70),width:devWidth,
               padding: EdgeInsets.symmetric(
                 horizontal:15,vertical:5
               ),
@@ -226,7 +227,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
               )
             ),
             Container(
-              height:20,width:double.infinity,
+              height:ScreenUtil().setHeight(20),width:double.infinity,
               color:Colors.blue[900],
               padding: EdgeInsets.symmetric(horizontal: 10),
               child:Row(
@@ -238,7 +239,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   )),
                   Container(
                     alignment: Alignment.center,
-                    height:15,width:15,
+                    height:ScreenUtil().setHeight(15),width:15,
                     decoration: BoxDecoration(
                       color:Colors.white,borderRadius:BorderRadius.circular(2)
                     ),
@@ -246,9 +247,9 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   )
                 ],
               )
-            ),SizedBox(height:5),
+            ),SizedBox(height:ScreenUtil().setHeight(5)),
             Container(
-              height:30,width:double.infinity,
+              height:ScreenUtil().setHeight(30),width:double.infinity,
               color:Colors.white,
               child:TabBar(
                 labelPadding:EdgeInsets.symmetric(horizontal:0) ,
@@ -272,7 +273,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                   Tab(text:'Print Out')
                 ],
               )
-            ),SizedBox(height:5),
+            ),SizedBox(height:ScreenUtil().setHeight(5)),
             if(controller.index==0)CardTab(),
             if(controller.index==1)PredictorTab(),
             if(controller.index==2)DrawTab(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/widgets/custom.dart';
 
 class Top10Screen extends StatefulWidget {
@@ -34,9 +35,9 @@ class _Top10ScreenState extends State<Top10Screen> {
           children: [
             CustomStaticWidget.formWidget(context),SizedBox(height:5),
             Container(
-              height:50,width:double.infinity,
+              height:ScreenUtil().setHeight(50),width:double.infinity,
               color: Colors.blue[900],
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,19 +47,19 @@ class _Top10ScreenState extends State<Top10Screen> {
                   ),
                   Text(
                     'Top 10 Owners',style: TextStyle(
-                      color:Colors.white70,fontSize: 16,
+                      color:Colors.white70,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
                     ),
                   ),
                   Text('')
                 ],
               ),
-            ),SizedBox(height:5),
+            ),SizedBox(height:ScreenUtil().setHeight(5)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                   alignment: Alignment.center,
-                  height:70,width:80,
+                  height:ScreenUtil().setHeight(74),width:ScreenUtil().setWidth(80),
                   decoration:BoxDecoration(
                     border: Border.all(
                       color:Colors.blue[900],width: 2
@@ -70,7 +71,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Year',style: TextStyle(
-                        color:Colors.black87,fontSize:12
+                        color:Colors.black87,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true)
                       ),),
                       DropdownButton<String>(
                         iconSize: 16,
@@ -92,7 +93,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height:70,width:80,
+                  height:ScreenUtil().setHeight(74),width:ScreenUtil().setWidth(80),
                   decoration:BoxDecoration(
                     border: Border.all(
                       color:Colors.blue[900],width: 2
@@ -104,7 +105,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Horse Kind',style: TextStyle(
-                        color:Colors.black87,fontSize:12
+                        color:Colors.black87,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true)
                       ),),
                       DropdownButton<String>(
                         iconSize: 16,
@@ -126,7 +127,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                 ),
                                 Container(
                   alignment: Alignment.center,
-                  height:70,width:80,
+                  height:ScreenUtil().setHeight(74),width:ScreenUtil().setWidth(80),
                   decoration:BoxDecoration(
                     border: Border.all(
                       color:Colors.blue[900],width: 2
@@ -138,7 +139,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Race Course',style: TextStyle(
-                        color:Colors.black87,fontSize:12
+                        color:Colors.black87,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true)
                       ),),
                       DropdownButton<String>(
                         iconSize: 16,
@@ -160,7 +161,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height:70,width:80,
+                  height:ScreenUtil().setHeight(74),width:ScreenUtil().setWidth(80),
                   decoration:BoxDecoration(
                     border: Border.all(
                       color:Colors.blue[900],width: 2
@@ -172,7 +173,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text('Ground',style: TextStyle(
-                        color:Colors.black87,fontSize:12
+                        color:Colors.black87,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true)
                       ),),
                        DropdownButton<String>(
                         iconSize: 16,
@@ -194,7 +195,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height:70,width:80,
+                  height:ScreenUtil().setHeight(74),width:ScreenUtil().setWidth(80),
                   decoration:BoxDecoration(
                     border: Border.all(
                       color:Colors.blue[900],width: 2
@@ -206,7 +207,7 @@ class _Top10ScreenState extends State<Top10Screen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text('length',style: TextStyle(
-                        color:Colors.black87,fontSize:12
+                        color:Colors.black87,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true)
                       ),),
                       DropdownButton<String>(
                         iconSize: 16,

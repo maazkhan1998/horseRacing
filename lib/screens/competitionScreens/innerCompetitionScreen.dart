@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:mks_racing/widgets/landingPage/competitionScreen/superFectaTabBar.dart';
 
@@ -28,9 +29,9 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),SizedBox(height:5),
+            CustomStaticWidget.formWidget(context),SizedBox(height:ScreenUtil().setHeight(5)),
             Container(
-              height:40,width:double.infinity,
+              height:ScreenUtil().setHeight(40),width:double.infinity,
               padding: EdgeInsets.symmetric(horizontal:10),
               color: Colors.blue[900],
               child: Row(
@@ -39,14 +40,14 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                 children: [
                   Icon(Icons.arrow_back_ios,color:Colors.white,size:18),
                   Text('NewCastle',style: TextStyle(
-                    color:Colors.white,fontSize: 16,fontWeight: FontWeight.w500
+                    color:Colors.white,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                   ),),
                   Text('19-11-200',style: TextStyle(
-                    color:Colors.white,fontSize: 12,
+                    color:Colors.white,fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                   ),)
                 ],
               ),
-            ),SizedBox(height:10),
+            ),SizedBox(height:ScreenUtil().setHeight(10)),
             Container(
       child: Stack(
         alignment: Alignment.center,
@@ -64,14 +65,14 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                       borderRadius:BorderRadius.circular(5),
                     ),
                     key: dataKeyList[index],
-                    height: 50,
-                    width: 50,
+                    height: ScreenUtil().setHeight(50),
+                    width: ScreenUtil().setWidth(50),
                     child:Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           alignment: Alignment.center,
-                          height:35,width: 50,
+                          height:ScreenUtil().setHeight(35),width: ScreenUtil().setWidth(50),
                           decoration: BoxDecoration(
                             color:selectedIndex == index ? Colors.red : Colors.green,
                             borderRadius: BorderRadius.only(
@@ -79,12 +80,12 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                             )
                           ),
                           child:Text(index.toString(),style: TextStyle(
-                            color:Colors.white,fontSize: 20,fontWeight:FontWeight.bold
+                            color:Colors.white,fontSize: ScreenUtil().setSp(20,allowFontScalingSelf: true),fontWeight:FontWeight.bold
                           ),)
                         ),
                         Container(
                           alignment: Alignment.center,
-                          height:15,width: 50,
+                          height:ScreenUtil().setHeight(15),width: ScreenUtil().setWidth(50),
                           decoration: BoxDecoration(
                             color:Colors.black87,
                             borderRadius: BorderRadius.only(
@@ -92,7 +93,7 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                             )
                           ),
                           child:Text('20:15',style: TextStyle(
-                            color:Colors.white,fontSize: 12,fontWeight:FontWeight.bold
+                            color:Colors.white,fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),fontWeight:FontWeight.bold
                           ),)
                         )
                       ],
@@ -143,9 +144,9 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
           )
         ],
       ),
-    ),SizedBox(height:10),
+    ),SizedBox(height:ScreenUtil().setHeight(10)),
     Container(
-      height:30,width:double.infinity,
+      height:ScreenUtil().setHeight(30),width:double.infinity,
       color:Colors.white,
       child: TabBar(
         onTap: (_)=>setState(()=>controller.index=_),

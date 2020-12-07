@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:mks_racing/widgets/landingPage/racingScreen/playerScreen/formTab.dart';
 
@@ -23,10 +24,10 @@ class _PlayerScreenState extends State<PlayerScreen> with SingleTickerProviderSt
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),SizedBox(height:5),
+            CustomStaticWidget.formWidget(context),SizedBox(height:ScreenUtil().setHeight(5)),
             Container(
-              height:40,width:double.infinity,
-              padding: EdgeInsets.symmetric(horizontal:10),
+              height:ScreenUtil().setHeight(40),width:double.infinity,
+              padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
               color: Colors.blue[900],
               child:Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,24 +35,24 @@ class _PlayerScreenState extends State<PlayerScreen> with SingleTickerProviderSt
                 children: [
                   Icon(Icons.arrow_back_ios,color:Colors.white),
                   Text('CHRIS GORDAN',style:TextStyle(
-                    color:Colors.white,fontSize:16,fontWeight:FontWeight.w500
+                    color:Colors.white,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight:FontWeight.w500
                   ),textAlign:TextAlign.center,
                   ),
                   Container(
                     alignment: Alignment.center,
-                    height:20,width:70,
+                    height:ScreenUtil().setHeight(20),width:ScreenUtil().setWidth(70),
                     decoration: BoxDecoration(
                       color:Colors.white,borderRadius: BorderRadius.circular(2)
                     ),
                     child:Text('Track Horse',
                     textAlign: TextAlign.center,
                     style:TextStyle(
-                      color:Colors.blue[900],fontSize: 10,fontWeight:FontWeight.w500
+                      color:Colors.blue[900],fontSize: ScreenUtil().setSp(10,allowFontScalingSelf: true),fontWeight:FontWeight.w500
                     ))
                   )
                 ],
               )
-            ),SizedBox(height:10),
+            ),SizedBox(height:ScreenUtil().setHeight(10)),
             FittedBox(
             child: DataTable(
                 headingRowColor: MaterialStateProperty.resolveWith<Color>(
@@ -230,9 +231,9 @@ class _PlayerScreenState extends State<PlayerScreen> with SingleTickerProviderSt
                 ],
               ))
               ,
-            )),SizedBox(height:10),
+            )),SizedBox(height:ScreenUtil().setHeight(10)),
             Container(
-              height:30,
+              height:ScreenUtil().setHeight(30),
               color:Colors.white,
                           child: TabBar(
                             onTap: (_)=>setState(()=>controller.index=_),

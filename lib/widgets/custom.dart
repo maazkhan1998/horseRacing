@@ -11,14 +11,14 @@ class CustomStaticWidget{
          backgroundColor: Colors.blue[900],
          centerTitle: true,
          leading: Icon(Icons.search,color:Colors.white),
-         title: ImageIcon(AssetImage('assets/Artboard 6 copy.png'),size: 50,),
+         title: ImageIcon(AssetImage('assets/Artboard 6 copy.png'),size: ScreenUtil().setSp(50),),
          actions: [
            Container(
              height:90,width:100,
                       child: Column(
                children:[
                  CircleAvatar(
-                   radius:20,
+                   radius: ScreenUtil().setSp(20),
                    backgroundImage: AssetImage('assets/Artboard 2 copy 2.png'),
                  ),
                  CountdownTimer(
@@ -38,19 +38,19 @@ class CustomStaticWidget{
 
   static formWidget(BuildContext context){
     return Container(
-      width:double.infinity,height:125,
+      width:double.infinity,height:ScreenUtil().setHeight(127),
       child: ListView.separated(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(vertical:ScreenUtil().setHeight(10),horizontal: ScreenUtil().setWidth(10)),
         itemCount: 5,
         physics: ClampingScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        separatorBuilder: (context,index)=>SizedBox(width:20),
+        separatorBuilder: (context,index)=>SizedBox(width:ScreenUtil().setWidth(20)),
         itemBuilder: (context,index){
           if(index!=4)
           return Container(
-            height:50,width:150,
+            height:ScreenUtil().setHeight(50),width:ScreenUtil().setWidth(150),
             padding: EdgeInsets.symmetric(
-              vertical:5,horizontal:10
+              vertical:ScreenUtil().setHeight(5),horizontal:ScreenUtil().setWidth(10)
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),color:Colors.white
@@ -61,16 +61,16 @@ class CustomStaticWidget{
               children: [
                 Text('ADDINGTON',
                 style:TextStyle(
-                  color:Colors.blue[600],fontSize: 16,fontWeight:FontWeight.bold
+                  color:Colors.blue[600],fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight:FontWeight.bold
                 )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text('Race 1',
                     style:TextStyle(
-                      color:Colors.grey,fontSize:12,fontWeight: FontWeight.bold
+                      color:Colors.grey,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true),fontWeight: FontWeight.bold
                     )),
-                    Image.asset('assets/Artboard 2 copy 4.png',height:20,width:20)
+                    Image.asset('assets/Artboard 2 copy 4.png',height:ScreenUtil().setHeight(20),width:ScreenUtil().setWidth(20))
                   ],
                 ),
                 Row(
@@ -78,40 +78,40 @@ class CustomStaticWidget{
                   children: [
                     Text('1h 44min',
                     style:TextStyle(
-                      color:Colors.grey,fontSize:12,fontWeight: FontWeight.bold
+                      color:Colors.grey,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true),fontWeight: FontWeight.bold
                     )),
                     Text('2600 m',
                     style:TextStyle(
-                      color:Colors.grey,fontSize:12,fontWeight: FontWeight.bold
+                      color:Colors.grey,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true),fontWeight: FontWeight.bold
                     ))
                   ],
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height:30,width:75,
+                  height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(75),
                   decoration: BoxDecoration(
                     color:Colors.blue[900],borderRadius: BorderRadius.circular(2.5)
                   ),
                   child:Text('Form',
                   textAlign: TextAlign.center,
                   style:TextStyle(
-                    color:Colors.white,fontSize:12,
+                    color:Colors.white,fontSize:ScreenUtil().setSp(12,allowFontScalingSelf: true),
                   )),
                 )
               ],
             ),
           );
           if(index==4) return Container(
-          width:150,
+          width:ScreenUtil().setWidth(150),
             child:Column(
               children: [
                 Text('ADDINGTON',
                 style:TextStyle(
                   color:Colors.blue[600],fontSize: 16,fontWeight:FontWeight.bold
                 )),
-                Image.asset('assets/Artboard 6 copy 2.png',height:65,width:150),
+                Image.asset('assets/Artboard 6 copy 2.png',height:ScreenUtil().setHeight(65),width:ScreenUtil().setWidth(150)),
                 Container(
-                  height:20,width:85,
+                  height:ScreenUtil().setHeight(20),width:ScreenUtil().setWidth(85),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.blue[900].withOpacity(0.5)

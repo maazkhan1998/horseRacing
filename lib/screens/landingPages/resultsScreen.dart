@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/widgets/custom.dart';
 
 class ResultsScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
         child: Column(
           crossAxisAlignment:CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),SizedBox(height:5),
+            CustomStaticWidget.formWidget(context),SizedBox(height:ScreenUtil().setHeight(5)),
             ListTile(
           tileColor: Colors.white,
           leading: CircleAvatar(
@@ -23,15 +24,15 @@ class _ResultsScreenState extends State<ResultsScreen> {
           ),
           title: Text('United Kingdom',
           style: TextStyle(
-            color:Colors.black,fontSize: 18,fontWeight:FontWeight.bold
+            color:Colors.black,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight:FontWeight.bold
           ),),
           trailing: Container(
-            height:30,width:30,color:Colors.blue[900],
+            height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
               child: Icon(Icons.add,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:10),
+        ),SizedBox(height:ScreenUtil().setHeight(10)),
         ListTile(
           tileColor: Colors.white,
           leading: CircleAvatar(
@@ -39,32 +40,32 @@ class _ResultsScreenState extends State<ResultsScreen> {
           ),
           title: Text('England',
           style: TextStyle(
-            color:Colors.black,fontSize: 18,fontWeight:FontWeight.bold
+            color:Colors.black,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight:FontWeight.bold
           ),),
           trailing: Container(
-            height:30,width:30,color:Colors.blue[900],
+            height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
               child: Icon(Icons.remove,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:10),
+        ),SizedBox(height:ScreenUtil().setHeight(10)),
         ListView.separated(
           shrinkWrap: true,
           physics:ClampingScrollPhysics(),
           itemCount: 3,
-          separatorBuilder: (context,index)=>SizedBox(height:5),
+          separatorBuilder: (context,index)=>SizedBox(height:ScreenUtil().setHeight(5)),
           itemBuilder: (context,index)=>
           Container(
-            height:80,
+            height:ScreenUtil().setHeight(80),
             alignment: Alignment.center,
-            color:Colors.white,padding: EdgeInsets.symmetric(vertical:5,horizontal:10),
+            color:Colors.white,padding: EdgeInsets.symmetric(vertical:ScreenUtil().setHeight(5),horizontal:10),
             child:Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('1:15',
                 style: TextStyle(
-                  color:Colors.black54,fontSize:22,fontWeight:FontWeight.bold
+                  color:Colors.black54,fontSize:ScreenUtil().setSp(22,allowFontScalingSelf: true),fontWeight:FontWeight.bold
                 ),),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,15 +73,15 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   children: [
                     Text('1st   The Big Breakway 4/9f',
                     style: TextStyle(
-                      color:Colors.black54,fontSize:16,fontWeight: FontWeight.w500
+                      color:Colors.black54,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                     ),),
                     Text('2nd   Doc Penfro 12/1',
                     style: TextStyle(
-                      color:Colors.black38,fontSize:16,fontWeight: FontWeight.w500
+                      color:Colors.black38,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                     ),),
                     Text('3rd   The Butcher said 8/1',
                     style: TextStyle(
-                      color:Colors.black38,fontSize:16,fontWeight: FontWeight.w500
+                      color:Colors.black38,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                     ),)
                   ],
                 ),

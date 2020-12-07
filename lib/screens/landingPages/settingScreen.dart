@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/widgets/custom.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -15,43 +16,43 @@ class _SettingScreenState extends State<SettingScreen> {
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),SizedBox(height:5),
+            CustomStaticWidget.formWidget(context),SizedBox(height:ScreenUtil().setHeight(5)),
             ListTile(
                 tileColor: Colors.white,
                 leading: Text('My Selection',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
-              ),SizedBox(height:5),
+              ),SizedBox(height:ScreenUtil().setHeight(5)),
               ListTile(
                 tileColor: Colors.white,
                 leading: Text('My Stanting',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
-              ),SizedBox(height:5),
+              ),SizedBox(height:ScreenUtil().setHeight(5)),
               ListTile(
                 tileColor: Colors.white,
                 leading: Text('Change Password',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
-              ),SizedBox(height:5),
+              ),SizedBox(height:ScreenUtil().setHeight(5)),
               ListTile(
                 tileColor: Colors.white,
                 leading: Text('- -',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
-              ),SizedBox(height:5),
+              ),SizedBox(height:ScreenUtil().setHeight(5)),
               ListTile(
                 tileColor: Colors.white,
                 leading: Text('Shop',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
-              ),SizedBox(height:5),
+              ),SizedBox(height:ScreenUtil().setHeight(5)),
               ListTile(
                 tileColor: Colors.white,
                 leading: Text('Edit Information',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
-              ),SizedBox(height:5)
+              ),SizedBox(height:ScreenUtil().setHeight(5))
           ],
         )
       ),

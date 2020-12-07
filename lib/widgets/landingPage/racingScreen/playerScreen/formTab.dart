@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 class FormTab extends StatefulWidget {
   @override
@@ -13,29 +14,29 @@ class _FormTabState extends State<FormTab> {
       children: [
         Container(
           alignment: Alignment.centerLeft,
-          height:20,width:double.infinity,
+          height:ScreenUtil().setHeight(20),width:double.infinity,
           color: Colors.blue[900],
-          padding: EdgeInsets.symmetric(horizontal:10),
+          padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
           child: RichText(
             text: TextSpan(
               children: [
                 TextSpan(
                   text: 'Race Record ',
                   style: TextStyle(
-                    color:Colors.white,fontSize: 10,fontWeight:FontWeight.w900
+                    color:Colors.white,fontSize: ScreenUtil().setSp(10,allowFontScalingSelf: true),fontWeight:FontWeight.w900
                   )
                 ),
                 TextSpan(
                   text: 'Jumps placings: 21/1502643-21',
                   style: TextStyle(
-                    color:Colors.white,fontSize: 8,
+                    color:Colors.white,fontSize: ScreenUtil().setSp(8,allowFontScalingSelf: true),
                   )
                 )
               ]
             ),
           ),
         ),
-        SizedBox(height:10),
+        SizedBox(height:ScreenUtil().setHeight(10)),
         FittedBox(
             child: DataTable(
                 headingRowColor: MaterialStateProperty.resolveWith<Color>(

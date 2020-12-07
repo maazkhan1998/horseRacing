@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/screens/racingScreen/raceScreen.dart';
 import 'package:mks_racing/screens/racingScreen/remainingRaceScreen.dart';
 import 'package:mks_racing/widgets/custom.dart';
@@ -20,7 +21,7 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomStaticWidget.formWidget(context),
-            SizedBox(height:10),
+            SizedBox(height:ScreenUtil().setHeight(10)),
             ListTile(
           tileColor: Colors.white,
           leading: CircleAvatar(
@@ -28,15 +29,15 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
           ),
           title: Text('United Kingdom',
           style: TextStyle(
-            color:Colors.black,fontSize: 18,fontWeight:FontWeight.bold
+            color:Colors.black,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight:FontWeight.bold
           ),),
           trailing: Container(
-            height:30,width:30,color:Colors.blue[900],
+            height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
               child: Icon(Icons.add,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:10),
+        ),SizedBox(height:ScreenUtil().setHeight(10)),
         ListTile(
           tileColor: Colors.white,
           leading: CircleAvatar(
@@ -44,19 +45,19 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
           ),
           title: Text('England',
           style: TextStyle(
-            color:Colors.black,fontSize: 18,fontWeight:FontWeight.bold
+            color:Colors.black,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight:FontWeight.bold
           ),),
           trailing: Container(
-            height:30,width:30,color:Colors.blue[900],
+            height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
               child: Icon(Icons.remove,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:5),
+        ),SizedBox(height:ScreenUtil().setHeight(5)),
         Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(
-            vertical: 5,horizontal:10
+            vertical: ScreenUtil().setHeight(5),horizontal:ScreenUtil().setWidth(10)
           ),
           color:Colors.white,
           child: Column(
@@ -69,10 +70,10 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
                      ),
                               child: Container(width: double.infinity,
                 padding: EdgeInsets.symmetric(
-                  horizontal:15
+                  horizontal:ScreenUtil().setWidth(15)
                 ),
                 alignment: Alignment.center,
-                height:50,decoration: BoxDecoration(
+                height:ScreenUtil().setHeight(50),decoration: BoxDecoration(
                   color: Colors.grey[300].withOpacity(0.5),
                   borderRadius: BorderRadius.circular(10)
                 ),
@@ -82,19 +83,19 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
                   children: [
                     Text('Newcastle',
                     style:TextStyle(
-                      color:Colors.blue,fontWeight: FontWeight.bold,fontSize: 16
+                      color:Colors.blue,fontWeight: FontWeight.bold,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)
                     )),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(width:30,height:30,alignment: Alignment.center,
+                        Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                         child: Text('F',
                         style: TextStyle(
-                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
+                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                         ),)),
-                        Container(width:30,height:30,alignment: Alignment.center,
+                        Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border:Border.all(
                             width: 2,color:Colors.grey,
@@ -102,28 +103,28 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
                         ),
                         child: Text('H',
                         style: TextStyle(
-                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
-                        ),)),SizedBox(width:10),
+                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
+                        ),)),SizedBox(width:ScreenUtil().setWidth(10)),
                         Text('2 m',
                         style:TextStyle(
-                          color: Colors.blue,fontWeight: FontWeight.bold,fontSize:16
+                          color: Colors.blue,fontWeight: FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                         ))
                       ],
                     )
                   ],
                 ),
                 ),
-              ),SizedBox(height:10),
+              ),SizedBox(height:ScreenUtil().setHeight(10)),
               GestureDetector(
                 onTap: ()=>pushNewScreen(context,
                   screen:RemainingRaceScreen()
                 ),
                               child: Container(width: double.infinity,
                 padding: EdgeInsets.symmetric(
-                  horizontal:15
+                  horizontal:ScreenUtil().setWidth(15)
                 ),
                 alignment: Alignment.center,
-                height:50,decoration: BoxDecoration(
+                height:ScreenUtil().setHeight(50),decoration: BoxDecoration(
                   color: Colors.grey[300].withOpacity(0.5),
                   borderRadius: BorderRadius.circular(10)
                 ),
@@ -133,19 +134,19 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
                   children: [
                     Text('Wolverhampton',
                     style:TextStyle(
-                      color:Colors.blue,fontWeight: FontWeight.bold,fontSize: 16
+                      color:Colors.blue,fontWeight: FontWeight.bold,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true)
                     )),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(width:30,height:30,alignment: Alignment.center,
+                        Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                         child: Text('F',
                         style: TextStyle(
-                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
+                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                         ),)),
-                        Container(width:30,height:30,alignment: Alignment.center,
+                        Container(width:ScreenUtil().setWidth(30),height:ScreenUtil().setHeight(30),alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border:Border.all(
                             width: 2,color:Colors.grey,
@@ -153,11 +154,11 @@ class _InnerRacingScreenState extends State<InnerRacingScreen> {
                         ),
                         child: Text('H',
                         style: TextStyle(
-                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:16
-                        ),)),SizedBox(width:10),
+                          color:Colors.grey,fontWeight:FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
+                        ),)),SizedBox(width:ScreenUtil().setWidth(10)),
                         Text('17 m',
                         style:TextStyle(
-                          color: Colors.blue,fontWeight: FontWeight.bold,fontSize:16
+                          color: Colors.blue,fontWeight: FontWeight.bold,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true)
                         ))
                       ],
                     )

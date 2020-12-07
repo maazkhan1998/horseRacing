@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 class TrackRecordScreen extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _TrackRecordScreenState extends State<TrackRecordScreen> {
                 'Date',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -35,7 +36,7 @@ class _TrackRecordScreenState extends State<TrackRecordScreen> {
                 'Crs',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -43,7 +44,7 @@ class _TrackRecordScreenState extends State<TrackRecordScreen> {
                 'Dist',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -51,7 +52,7 @@ class _TrackRecordScreenState extends State<TrackRecordScreen> {
                 'TC',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -59,7 +60,7 @@ class _TrackRecordScreenState extends State<TrackRecordScreen> {
                 'Types',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(
@@ -67,7 +68,7 @@ class _TrackRecordScreenState extends State<TrackRecordScreen> {
                 'Dts',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               )),
               DataColumn(

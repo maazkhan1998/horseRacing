@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/screens/statsScreens/top10Screen.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -17,11 +18,11 @@ class _StatsScreenState extends State<StatsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),SizedBox(height:5),
+            CustomStaticWidget.formWidget(context),SizedBox(height:ScreenUtil().setHeight(5)),
             Container(
-              height:50,width:double.infinity,
+              height:ScreenUtil().setHeight(50),width:double.infinity,
               color: Colors.blue[900],
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,18 +32,18 @@ class _StatsScreenState extends State<StatsScreen> {
                   ),
                   Text(
                     'Statistics',style: TextStyle(
-                      color:Colors.white70,fontSize: 16,
+                      color:Colors.white70,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
                     ),
                   ),
                   Text('')
                 ],
               ),
-            ),SizedBox(height:10),
+            ),SizedBox(height:ScreenUtil().setHeight(10)),
             ListView.separated(
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
               itemCount:5,
-              separatorBuilder: (context,index)=>SizedBox(height:5),
+              separatorBuilder: (context,index)=>SizedBox(height:ScreenUtil().setHeight(5)),
               itemBuilder: (context,index)=>ListTile(
                 onTap: ()=>pushNewScreen(
                   context,
@@ -50,7 +51,7 @@ class _StatsScreenState extends State<StatsScreen> {
                 ),
                 tileColor: Colors.white,
                 leading: Text('Top 10 Owners',style: TextStyle(
-                  color:Colors.black87,fontSize: 18,fontWeight: FontWeight.w500
+                  color:Colors.black87,fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                 ),),
               ),
             )
