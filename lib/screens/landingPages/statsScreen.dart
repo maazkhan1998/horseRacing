@@ -13,7 +13,10 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

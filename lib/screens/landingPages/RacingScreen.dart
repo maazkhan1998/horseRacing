@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:mks_racing/main.dart';
-import 'package:mks_racing/screens/racingScreen/innerRacingScreen.dart';
+import 'package:mks_racing/screens/racingScreen/raceScreen.dart';
+import 'package:mks_racing/screens/racingScreen/remainingRaceScreen.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -14,7 +14,10 @@ class _RacingScreenState extends State<RacingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
           child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -63,7 +66,7 @@ class _RacingScreenState extends State<RacingScreen> {
                   GestureDetector(
                     onTap: () => pushNewScreen(
                       context,
-                      screen: InnerRacingScreen(),
+                      screen:index%2==0? RaceScreen():RemainingRaceScreen(),
                       pageTransitionAnimation:
                           PageTransitionAnimation.cupertino,
                     ),

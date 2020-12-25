@@ -19,7 +19,10 @@ class _PlayerScreenState extends State<PlayerScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +36,9 @@ class _PlayerScreenState extends State<PlayerScreen> with SingleTickerProviderSt
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.arrow_back_ios,color:Colors.white),
+                  GestureDetector(
+                    onTap: ()=>Navigator.of(context).pop(),
+                    child:Icon(Icons.arrow_back_ios,color:Colors.white)),
                   Text('CHRIS GORDAN',style:TextStyle(
                     color:Colors.white,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight:FontWeight.w500
                   ),textAlign:TextAlign.center,

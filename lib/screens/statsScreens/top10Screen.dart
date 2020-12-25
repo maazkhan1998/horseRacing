@@ -9,26 +9,29 @@ class Top10Screen extends StatefulWidget {
 
 class _Top10ScreenState extends State<Top10Screen> {
 
-     var yearDropDown=['Any','Any1','Any2'];
-  var yearselected='Any';
+     var yearDropDown=['Asc','Dsc',];
+  var yearselected='Asc';
 
-  var horseDropDown=['Any','Any1','Any2'];
-  var horseselected='Any';
+  var horseDropDown=['Asc','Dsc'];
+  var horseselected='Asc';
 
-  var raceDropDown=['Any','Any1','Any2'];
-  var raceselected='Any';
+  var raceDropDown=['Asc','Dsc'];
+  var raceselected='Asc';
 
-  var groundDropDown=['Any','Any1','Any2'];
-  var groundselected='Any';
+  var groundDropDown=['Asc','Dsc'];
+  var groundselected='Asc';
 
-  var lengthDropDown=['Any','Any1','Any2'];
-  var lengthselected='Any';
+  var lengthDropDown=['Asc','Dsc'];
+  var lengthselected='Asc';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,

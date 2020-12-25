@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mks_racing/screens/racingScreen/innerRacingScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import 'landingPages/RacingScreen.dart';
@@ -8,6 +9,8 @@ import 'landingPages/homeScreen.dart';
 import 'landingPages/resultsScreen.dart';
 import 'landingPages/settingScreen.dart';
 import 'landingPages/statsScreen.dart';
+
+int endTime=DateTime.now().millisecondsSinceEpoch+5*60000;
 
 class LandingPage extends StatefulWidget {
   @override
@@ -31,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
       controller: _controller,
       screens: [
         HomeScreen(),
-        RacingScreen(),
+        InnerRacingScreen(),
         ResultsScreen(),
         StatsScreen(),
         CompetitionScreen(),
@@ -42,7 +45,7 @@ class _LandingPageState extends State<LandingPage> {
             icon: ImageIcon(
           AssetImage(
             'assets/Artboard 2 copy 5.png'
-          )
+          ),
           ),
           title:'Home',
           inactiveColor: Colors.grey[700],
@@ -108,7 +111,7 @@ class _LandingPageState extends State<LandingPage> {
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows:
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument.
-      popAllScreensOnTapOfSelectedTab: false,
+      popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: ItemAnimationProperties(
         // Navigation Bar's items animation properties.
@@ -122,7 +125,7 @@ class _LandingPageState extends State<LandingPage> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style6, // Choose the nav bar style with this property.
+          NavBarStyle.style9, // Chooe the nav bar style with this property.
     );
   }
 }

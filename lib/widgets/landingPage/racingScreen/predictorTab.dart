@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:mks_racing/main.dart';
 
 class PredictorTab extends StatefulWidget {
   @override

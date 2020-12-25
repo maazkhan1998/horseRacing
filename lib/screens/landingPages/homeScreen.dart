@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:mks_racing/main.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:mks_racing/widgets/landingPage/homeScreen/todayTab.dart';
 
@@ -17,7 +16,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(61),
+        child: AppBarClock(),
+      ),
           body: SingleChildScrollView(
             child: Column(
           mainAxisSize: MainAxisSize.min,

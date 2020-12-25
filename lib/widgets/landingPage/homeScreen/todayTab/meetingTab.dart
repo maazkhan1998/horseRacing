@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mks_racing/main.dart';
 
 class MeetingTab extends StatefulWidget {
   @override
@@ -7,12 +8,19 @@ class MeetingTab extends StatefulWidget {
 }
 
 class _MeetingTabState extends State<MeetingTab> {
+
+ bool isFirstTileOpened=false;
+ bool isSecondTileOpened=false;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          tileColor: Colors.white,
+        Container(
+          color:Colors.white,
+        child:
+        ExpansionTile(
+          initiallyExpanded: isFirstTileOpened,
+          onExpansionChanged: (val)=>setState(()=>isFirstTileOpened=val),
           leading: CircleAvatar(
             backgroundImage:AssetImage('assets/Artboard 12.png') ,
           ),
@@ -23,12 +31,24 @@ class _MeetingTabState extends State<MeetingTab> {
           trailing: Container(
             height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
-              child: Icon(Icons.add,color:Colors.grey,size:30),
+              child: Icon(!isFirstTileOpened?Icons.add:Icons.remove,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:ScreenUtil().setHeight(10)),
-        ListTile(
-          tileColor: Colors.white,
+          backgroundColor: Colors.white,
+          children: [
+            tileExpansion()
+          ],
+        )),SizedBox(height:ScreenUtil().setHeight(10)),
+        Container(
+          color: Colors.white,
+          child:
+        ExpansionTile(
+          initiallyExpanded: isSecondTileOpened,
+          backgroundColor: Colors.white,
+          children: [
+            tileExpansion()
+          ],
+          onExpansionChanged: (val)=>setState(()=>isSecondTileOpened=val),
           leading: CircleAvatar(
             backgroundImage:AssetImage('assets/Artboard 12 copy.png') ,
           ),
@@ -39,10 +59,10 @@ class _MeetingTabState extends State<MeetingTab> {
           trailing: Container(
             height:ScreenUtil().setHeight(30),width:ScreenUtil().setWidth(30),color:Colors.blue[900],
             child: Center(
-              child: Icon(Icons.remove,color:Colors.grey,size:30),
+              child: Icon(isSecondTileOpened?Icons.remove:Icons.add,color:Colors.grey,size:30),
             ),
           ),
-        ),SizedBox(height:ScreenUtil().setHeight(5)),
+        )),SizedBox(height:ScreenUtil().setHeight(5)),
         Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(
@@ -51,10 +71,54 @@ class _MeetingTabState extends State<MeetingTab> {
           color:Colors.white,
           child: Column(
             children: [
-              Container(width: double.infinity,
+              SizedBox(height:ScreenUtil().setHeight(15)),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],borderRadius:BorderRadius.circular(25)
+                ),
+                child: Column(
+                                  children:[ Container(
+                    width: double.infinity,height:ScreenUtil().setHeight(150),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),topRight: Radius.circular(20)
+                      ),image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/Artboard 14.png')
+                      )
+                    ),
+                  ),
+                  Padding(
+                    padding:EdgeInsets.symmetric(
+                      horizontal:10,vertical:ScreenUtil().setHeight(20),
+                    ),
+                    child: Text('Davis Fellas : Race Review of Happy Valley - 8th Novemeber 2020',
+                    style:TextStyle(
+                      color:Colors.blue,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.bold
+                    )),
+                  )
+                                  ]
+                ),
+              )
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+tileExpansion(){
+ return Column(
+   children: [
+     Container(width: devWidth,
               padding: EdgeInsets.symmetric(
                 horizontal:15
               ),
+              margin:EdgeInsets.symmetric(
+                horizontal:15,vertical: 10
+              ) ,
               alignment: Alignment.center,
               height:ScreenUtil().setHeight(50),decoration: BoxDecoration(
                 color: Colors.grey[300].withOpacity(0.5),
@@ -96,11 +160,14 @@ class _MeetingTabState extends State<MeetingTab> {
                   )
                 ],
               ),
-              ),SizedBox(height:ScreenUtil().setHeight(10)),
-              Container(width: double.infinity,
+              ),
+              Container(width: devWidth,
               padding: EdgeInsets.symmetric(
                 horizontal:15
               ),
+              margin:EdgeInsets.symmetric(
+                horizontal:15,vertical: 10
+              ) ,
               alignment: Alignment.center,
               height:ScreenUtil().setHeight(50),decoration: BoxDecoration(
                 color: Colors.grey[300].withOpacity(0.5),
@@ -142,40 +209,8 @@ class _MeetingTabState extends State<MeetingTab> {
                   )
                 ],
               ),
-              ),SizedBox(height:ScreenUtil().setHeight(15)),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],borderRadius:BorderRadius.circular(25)
-                ),
-                child: Column(
-                                  children:[ Container(
-                    width: double.infinity,height:ScreenUtil().setHeight(150),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),topRight: Radius.circular(20)
-                      ),image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/Artboard 14.png')
-                      )
-                    ),
-                  ),
-                  Padding(
-                    padding:EdgeInsets.symmetric(
-                      horizontal:10,vertical:ScreenUtil().setHeight(20),
-                    ),
-                    child: Text('Davis Fellas : Race Review of Happy Valley - 8th Novemeber 2020',
-                    style:TextStyle(
-                      color:Colors.blue,fontSize:ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.bold
-                    )),
-                  )
-                                  ]
-                ),
               )
-            ],
-          ),
-        )
-      ],
-    );
-  }
+   ],
+ );
+  
 }

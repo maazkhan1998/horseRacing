@@ -24,7 +24,10 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +41,9 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(Icons.arrow_back_ios,color:Colors.white,size:18),
+                  GestureDetector(
+                    onTap: ()=>Navigator.of(context).pop(),
+                    child:Icon(Icons.arrow_back_ios,color:Colors.white,size:18)),
                   Text('NewCastle',style: TextStyle(
                     color:Colors.white,fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                   ),),
@@ -58,7 +63,9 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 totalvalues,
-                (index) => Padding(
+                (index) => GestureDetector(
+                  onTap: ()=>setState(()=>selectedIndex=index),
+                  child:Padding(
                   padding: EdgeInsets.symmetric(horizontal:5),
                                   child: Container(
                     decoration: BoxDecoration(
@@ -99,7 +106,7 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                       ],
                     ),
                   ),
-                ),
+                )),
               ),
             ),
           ),
@@ -119,7 +126,8 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
                 },
                 child: Card(
                   color: Colors.black87,
-                  child: Icon(Icons.arrow_back_ios,color:Colors.white),
+                  child: GestureDetector(
+                    child:Icon(Icons.arrow_back_ios,color:Colors.white)),
                 ),
               ),
               Spacer(),
@@ -162,7 +170,7 @@ class _InnerCompetitionScreenState extends State<InnerCompetitionScreen> with Si
         ],
       ),
     ),
-    if(controller.index==2)SuperFectaTabBar()
+    if(controller.index==2)SuperFectaTabBar(index: selectedIndex,)
           ],
         )
       ),

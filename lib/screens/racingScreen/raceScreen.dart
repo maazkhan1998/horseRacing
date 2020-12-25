@@ -8,8 +8,6 @@ import 'package:mks_racing/widgets/landingPage/racingScreen/summaryTab.dart';
 import 'package:mks_racing/widgets/landingPage/racingScreen/trackRecordTab.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../main.dart';
-
 class RaceScreen extends StatefulWidget {
   @override
   _RaceScreenState createState() => _RaceScreenState();
@@ -33,7 +31,10 @@ class _RaceScreenState extends State<RaceScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize:MainAxisSize.min,
@@ -71,7 +72,9 @@ class _RaceScreenState extends State<RaceScreen> with SingleTickerProviderStateM
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 totalvalues,
-                (index) => Padding(
+                (index) => GestureDetector(
+                  onTap: ()=>setState(()=>selectedIndex=index),
+                  child:Padding(
                   padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(5)),
                                   child: Container(
                     decoration: BoxDecoration(
@@ -112,7 +115,7 @@ class _RaceScreenState extends State<RaceScreen> with SingleTickerProviderStateM
                       ],
                     ),
                   ),
-                ),
+                )),
               ),
             ),
           ),
@@ -203,7 +206,7 @@ class _RaceScreenState extends State<RaceScreen> with SingleTickerProviderStateM
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset('assets/Artboard 30.png',height:ScreenUtil().setHeight(70),width:ScreenUtil().setWidth(80)),
-                  Text('Race Name',
+                  Text('Race Name $selectedIndex',
                   style:TextStyle(
                     color:Colors.blue[900],fontSize: ScreenUtil().setSp(26,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                   )),

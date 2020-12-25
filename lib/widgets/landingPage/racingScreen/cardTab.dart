@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/screenutil.dart';
 import 'package:mks_racing/screens/racingScreen/playerScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-import '../../../main.dart';
-
 class CardTab extends StatefulWidget {
   @override
   _CardTabState createState() => _CardTabState();

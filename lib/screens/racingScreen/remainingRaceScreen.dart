@@ -19,7 +19,10 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomStaticWidget.apppBar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBarClock(),
+      ),
       body: SingleChildScrollView(
               child: Column(
          mainAxisSize: MainAxisSize.min,
@@ -57,7 +60,9 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 totalvalues,
-                (index) => Padding(
+                (index) =>GestureDetector(
+                  onTap: ()=>setState(()=>selectedIndex=index),
+                  child: Padding(
                   padding: EdgeInsets.symmetric(horizontal:5),
                                   child: Container(
                     decoration: BoxDecoration(
@@ -98,7 +103,7 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
                       ],
                     ),
                   ),
-                ),
+                )),
               ),
             ),
           ),
@@ -197,7 +202,7 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
                              Image.asset('assets/Artboard 14.png',height:ScreenUtil().setHeight(40),width:ScreenUtil().setWidth(80))
                           ],
                         ),
-                        Text('Race Name',
+                        Text('Race Name $selectedIndex',
                     style:TextStyle(
                       color:Colors.blue[900],fontSize: ScreenUtil().setSp(26,allowFontScalingSelf: true),fontWeight: FontWeight.w500
                     )),Row(
@@ -339,21 +344,21 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
               Container(
                 alignment: Alignment.center,
                 height: ScreenUtil().setHeight(20),
-                width:ScreenUtil().setWidth(devWidth/6),
+                width:ScreenUtil().setWidth(411/6),
                 color: Colors.blue[900],
                 child: Text(
                   'Number',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
+                      fontSize: ScreenUtil().setSp(12,allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 alignment: Alignment.center,
                 height: ScreenUtil().setHeight(20),
-                width: ScreenUtil().setWidth(devWidth/6),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.white,
                 child: Text(
                   'Name',
@@ -367,7 +372,7 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
               Container(
                 alignment: Alignment.center,
                 height: ScreenUtil().setHeight(20),
-                width: ScreenUtil().setWidth(devWidth/6),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.blue[900],
                 child: Text(
                   'Draw',
@@ -381,7 +386,7 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
               Container(
                 alignment: Alignment.center,
                 height: ScreenUtil().setHeight(20),
-                width: ScreenUtil().setWidth(devWidth/6),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.white,
                 child: Text(
                   'Age',
@@ -395,7 +400,7 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
               Container(
                 alignment: Alignment.center,
                 height: ScreenUtil().setHeight(20),
-                width: ScreenUtil().setWidth(devWidth/6),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.blue[900],
                 child: Text(
                   'Weight',
@@ -409,7 +414,7 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
               Container(
                 alignment: Alignment.center,
                 height: ScreenUtil().setHeight(20),
-                width: ScreenUtil().setWidth(devWidth/6),
+                width: ScreenUtil().setWidth(411/6),
                 color: Colors.white,
                 child: Text(
                   'Rating',

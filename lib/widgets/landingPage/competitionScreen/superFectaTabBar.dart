@@ -9,6 +9,10 @@ import 'package:mks_racing/widgets/landingPage/racingScreen/trackRecordTab.dart'
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class SuperFectaTabBar extends StatefulWidget {
+
+  final index;
+
+  SuperFectaTabBar({this.index});
   @override
   _SuperFectaTabBarState createState() => _SuperFectaTabBarState();
 }
@@ -156,7 +160,7 @@ class _SuperFectaTabBarState extends State<SuperFectaTabBar> with SingleTickerPr
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset('assets/Artboard 30.png',height:ScreenUtil().setHeight(70),width:80),
-                  Text('Race Name',
+                  Text('Race Name ${widget.index}',
                   style:TextStyle(
                     color:Colors.blue[900],fontSize: 26,fontWeight: FontWeight.w500
                   )),
