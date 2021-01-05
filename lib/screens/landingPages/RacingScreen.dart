@@ -64,12 +64,7 @@ class _RacingScreenState extends State<RacingScreen> {
               child: Row(
                 children: [
                   GestureDetector(
-                    onTap: () => pushNewScreen(
-                      context,
-                      screen:index%2==0? RaceScreen():RemainingRaceScreen(),
-                      pageTransitionAnimation:
-                          PageTransitionAnimation.cupertino,
-                    ),
+                    onTap: () => pushNewScreen(context, screen: RaceScreen()),
                     child: Container(
                       padding: EdgeInsets.symmetric(
                           vertical: ScreenUtil().setHeight(10),
@@ -130,7 +125,7 @@ class _RacingScreenState extends State<RacingScreen> {
                               ),
                             ),
                             Positioned(
-                              top: 0,
+                              top: 3,
                               right: 0,
                               child: Container(
                                 height: ScreenUtil().setHeight(20),
@@ -152,7 +147,7 @@ class _RacingScreenState extends State<RacingScreen> {
                           ]),
                           SizedBox(width: ScreenUtil().setWidth(10)),
                           Expanded(
-                                                      child: Column(
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,7 +165,8 @@ class _RacingScreenState extends State<RacingScreen> {
                                         text: '- Handicap (Class 6)',
                                         style: TextStyle(
                                             color: Colors.grey,
-                                            fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
+                                            fontSize: ScreenUtil().setSp(14,
+                                                allowFontScalingSelf: true),
                                             fontWeight: FontWeight.bold))
                                   ]),
                                 ),
@@ -178,18 +174,21 @@ class _RacingScreenState extends State<RacingScreen> {
                                   'For 3 olds and upwards',
                                   style: TextStyle(
                                       color: Colors.blue,
-                                      fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
+                                      fontSize: ScreenUtil().setSp(14,
+                                          allowFontScalingSelf: true),
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text('Distance: 1225 m | Flat Race |',
                                     style: TextStyle(
                                         color: Colors.grey,
-                                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
+                                        fontSize: ScreenUtil().setSp(14,
+                                            allowFontScalingSelf: true),
                                         fontWeight: FontWeight.bold)),
                                 Text('Purse: 5593GBP | 11 Runners',
                                     style: TextStyle(
                                         color: Colors.grey,
-                                        fontSize: ScreenUtil().setSp(14,allowFontScalingSelf: true),
+                                        fontSize: ScreenUtil().setSp(14,
+                                            allowFontScalingSelf: true),
                                         fontWeight: FontWeight.bold))
                               ],
                             ),
@@ -200,7 +199,7 @@ class _RacingScreenState extends State<RacingScreen> {
                   ),
                   Container(
                     height: ScreenUtil().setHeight(100),
-                    width: ScreenUtil().setWidth(411 / 4*1.25),
+                    width: ScreenUtil().setWidth(411 / 4 * 1.25),
                     color: Colors.blue[900].withOpacity(0.2),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -209,7 +208,7 @@ class _RacingScreenState extends State<RacingScreen> {
                         Padding(
                           padding: EdgeInsets.only(
                               left: ScreenUtil().setWidth(10),
-                              top: ScreenUtil().setHeight(5)),
+                              top: ScreenUtil().setHeight(12)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,18 +290,23 @@ class _RacingScreenState extends State<RacingScreen> {
                                               allowFontScalingSelf: true),
                                           color: Colors.blue[900]))),
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              height: ScreenUtil().setHeight(20),
-                              width: ScreenUtil().setWidth(411 / 4 * 1.25 / 2),
-                              color: Colors.blue[900],
-                              child: Text(
-                                'Result',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: ScreenUtil()
-                                        .setSp(12, allowFontScalingSelf: true),
-                                    fontWeight: FontWeight.bold),
+                            GestureDetector(
+                              onTap: () => pushNewScreen(context,
+                                  screen: RemainingRaceScreen()),
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: ScreenUtil().setHeight(20),
+                                width:
+                                    ScreenUtil().setWidth(411 / 4 * 1.25 / 2),
+                                color: Colors.blue[900],
+                                child: Text(
+                                  'Result',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: ScreenUtil().setSp(12,
+                                          allowFontScalingSelf: true),
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             )
                           ],

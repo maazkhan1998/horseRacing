@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mks_racing/screens/alertScreen.dart';
+import 'package:mks_racing/screens/landingPage.dart';
 import 'package:mks_racing/screens/signUpScreen.dart';
 import 'package:mks_racing/validator/validator.dart';
 
@@ -13,16 +13,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   bool isHiding = true;
-  TextEditingController emailController=TextEditingController();
-  TextEditingController passController=TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
-  FocusNode passNode=FocusNode();
+  FocusNode passNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context,designSize:Size(411,683));
+    ScreenUtil.init(context, designSize: Size(411, 683));
     devHeight = MediaQuery.of(context).size.height;
     devWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -30,7 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Scaffold(
         backgroundColor: Colors.grey[200],
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20), vertical: ScreenUtil().setHeight(60)),
+          padding: EdgeInsets.symmetric(
+              horizontal: ScreenUtil().setWidth(20),
+              vertical: ScreenUtil().setHeight(60)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -49,11 +50,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text('Email:',
                       style: TextStyle(
                           color: Colors.blue[900],
-                          fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
+                          fontSize: ScreenUtil()
+                              .setSp(16, allowFontScalingSelf: true),
                           fontWeight: FontWeight.bold)),
                   SizedBox(height: ScreenUtil().setHeight(5)),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(10)),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().setWidth(10)),
                     decoration: BoxDecoration(
                         color: Colors.grey[100],
                         borderRadius: BorderRadius.circular(5),
@@ -65,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: ScreenUtil().setHeight(50),
                     child: Center(
                       child: TextField(
-                        onSubmitted: (_)=>passNode.requestFocus(),
+                        onSubmitted: (_) => passNode.requestFocus(),
                         textInputAction: TextInputAction.next,
                         controller: emailController,
                         textAlignVertical: TextAlignVertical.center,
@@ -95,11 +98,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text('Password:',
                       style: TextStyle(
                           color: Colors.blue[900],
-                          fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
+                          fontSize: ScreenUtil()
+                              .setSp(16, allowFontScalingSelf: true),
                           fontWeight: FontWeight.bold)),
                   SizedBox(height: ScreenUtil().setHeight(5)),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(10)),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().setWidth(10)),
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(color: Colors.grey[300], offset: Offset(2, 4))
@@ -112,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Center(
                       child: TextField(
                         textInputAction: TextInputAction.done,
-                        onSubmitted: (_)=>FocusScope.of(context).unfocus(),
+                        onSubmitted: (_) => FocusScope.of(context).unfocus(),
                         controller: passController,
                         obscureText: isHiding,
                         textAlignVertical: TextAlignVertical.center,
@@ -139,16 +144,23 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: ScreenUtil().setHeight(35)),
               GestureDetector(
-                onTap: (){
-                  if(!validator(ValidatorType.email,emailController.text)) return Fluttertoast.showToast(msg: 'Incorrect email format',gravity: ToastGravity.BOTTOM,backgroundColor: Colors.grey[800],textColor: Colors.white);
-                  if(!validator(ValidatorType.password,passController.text)) return Fluttertoast.showToast(msg: 'Password too weak',gravity: ToastGravity.BOTTOM,backgroundColor: Colors.grey[800],textColor: Colors.white);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_)=>AlertScreen()
-                    )
-                  );
+                onTap: () {
+                  if (!validator(ValidatorType.email, emailController.text))
+                    return Fluttertoast.showToast(
+                        msg: 'Incorrect email format',
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.grey[800],
+                        textColor: Colors.white);
+                  if (!validator(ValidatorType.password, passController.text))
+                    return Fluttertoast.showToast(
+                        msg: 'Password too weak',
+                        gravity: ToastGravity.BOTTOM,
+                        backgroundColor: Colors.grey[800],
+                        textColor: Colors.white);
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => LandingPage()));
                 },
-                              child: Container(
+                child: Container(
                     alignment: Alignment.center,
                     width: double.infinity,
                     height: ScreenUtil().setHeight(45),
@@ -160,7 +172,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: ScreenUtil().setSp(18,allowFontScalingSelf: true),
+                          fontSize: ScreenUtil()
+                              .setSp(18, allowFontScalingSelf: true),
                           fontWeight: FontWeight.w600),
                     )),
               ),
@@ -171,7 +184,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.blue[800],
-                      fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
+                      fontSize:
+                          ScreenUtil().setSp(16, allowFontScalingSelf: true),
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.bold),
                 ),
@@ -205,7 +219,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Create New Account',
                   style: TextStyle(
                       color: Colors.grey[600],
-                      fontSize: ScreenUtil().setSp(26,allowFontScalingSelf: true),
+                      fontSize:
+                          ScreenUtil().setSp(26, allowFontScalingSelf: true),
                       fontWeight: FontWeight.bold),
                 )),
               ),
@@ -215,7 +230,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 "Contact support if you can't log in",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ScreenUtil().setSp(16,allowFontScalingSelf: true),
+                    fontSize:
+                        ScreenUtil().setSp(16, allowFontScalingSelf: true),
                     fontWeight: FontWeight.bold),
               ))
             ],
