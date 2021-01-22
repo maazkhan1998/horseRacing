@@ -2,10 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mks_racing/provider/raceCardTodayProvider.dart';
 import 'package:mks_racing/screens/racingScreen/playerScreen.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
@@ -33,7 +35,9 @@ class _RemainingRaceScreenState extends State<RemainingRaceScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),
+            RaceCardTodayWidget(
+                Provider.of<RaceCardTodayProvider>(context, listen: false)
+                    .raceCardToday),
             SizedBox(height: ScreenUtil().setHeight(5)),
             Container(
               width: double.infinity,

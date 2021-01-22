@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mks_racing/screens/landingPage.dart';
+import 'package:mks_racing/provider/authProvider.dart';
 import 'package:mks_racing/screens/signUpScreen.dart';
 import 'package:mks_racing/validator/validator.dart';
+import 'package:provider/provider.dart';
 
 import '../main.dart';
 
@@ -19,9 +20,38 @@ class _LoginScreenState extends State<LoginScreen> {
 
   FocusNode passNode = FocusNode();
 
+  bool isLoading = false;
+
+  onTap() async {
+    if (!validator(ValidatorType.email, emailController.text))
+      return Fluttertoast.showToast(
+          msg: 'Incorrect email format',
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.grey[800],
+          textColor: Colors.white);
+    if (!validator(ValidatorType.password, passController.text))
+      return Fluttertoast.showToast(
+          msg: 'Password too weak',
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.grey[800],
+          textColor: Colors.white);
+    setState(() => isLoading = true);
+    try {
+      await Provider.of<AuthProvider>(context, listen: false)
+          .login(emailController.text, passController.text);
+      setState(() => isLoading = false);
+    } catch (e) {
+      setState(() => isLoading = false);
+      return Fluttertoast.showToast(
+          msg: e.toString(),
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.grey[800],
+          textColor: Colors.white);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, designSize: Size(411, 683));
     devHeight = MediaQuery.of(context).size.height;
     devWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -144,22 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: ScreenUtil().setHeight(35)),
               GestureDetector(
-                onTap: () {
-                  if (!validator(ValidatorType.email, emailController.text))
-                    return Fluttertoast.showToast(
-                        msg: 'Incorrect email format',
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.grey[800],
-                        textColor: Colors.white);
-                  if (!validator(ValidatorType.password, passController.text))
-                    return Fluttertoast.showToast(
-                        msg: 'Password too weak',
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.grey[800],
-                        textColor: Colors.white);
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => LandingPage()));
-                },
+                onTap: onTap,
                 child: Container(
                     alignment: Alignment.center,
                     width: double.infinity,
@@ -167,15 +182,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.blue[900]),
-                    child: Text(
-                      'Login',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: ScreenUtil()
-                              .setSp(18, allowFontScalingSelf: true),
-                          fontWeight: FontWeight.w600),
-                    )),
+                    child: isLoading
+                        ? CircularProgressIndicator(
+                            backgroundColor: Colors.white,
+                          )
+                        : Text(
+                            'Login',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil()
+                                    .setSp(18, allowFontScalingSelf: true),
+                                fontWeight: FontWeight.w600),
+                          )),
               ),
               SizedBox(height: ScreenUtil().setHeight(10)),
               Center(

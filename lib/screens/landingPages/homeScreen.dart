@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mks_racing/provider/raceCardTodayProvider.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:mks_racing/widgets/landingPage/homeScreen/calendarTab/calendarTab.dart';
 import 'package:mks_racing/widgets/landingPage/homeScreen/todayTab.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,7 +27,9 @@ class _HomeScreenState extends State<HomeScreen>
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomStaticWidget.formWidget(context),
+            RaceCardTodayWidget(
+                Provider.of<RaceCardTodayProvider>(context, listen: false)
+                    .raceCardToday),
             SizedBox(height: ScreenUtil().setHeight(10)),
             Container(
               width: double.infinity,

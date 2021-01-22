@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mks_racing/provider/raceCardTodayProvider.dart';
 import 'package:mks_racing/widgets/custom.dart';
+import 'package:provider/provider.dart';
 
 class Top10Screen extends StatefulWidget {
   @override
@@ -38,7 +40,9 @@ class _Top10ScreenState extends State<Top10Screen> {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomStaticWidget.formWidget(context),
+          RaceCardTodayWidget(
+              Provider.of<RaceCardTodayProvider>(context, listen: false)
+                  .raceCardToday),
           SizedBox(height: 5),
           Container(
             height: ScreenUtil().setHeight(50),

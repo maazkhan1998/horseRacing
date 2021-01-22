@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flag/flag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mks_racing/apiURL.dart';
 import 'package:mks_racing/main.dart';
+import 'package:mks_racing/model/meetingByDate.dart';
 import 'package:mks_racing/screens/landingPages/RacingScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:http/http.dart' as http;
 
 import 'indicator.dart';
 
@@ -16,6 +22,28 @@ class _MeetingTabState extends State<MeetingTab> {
   bool isFirstTileOpened = false;
   bool isSecondTileOpened = false;
   int touchedIndex;
+
+  bool isLoading = true;
+  MeetingByDate meetings;
+
+  initState() {
+    Future.delayed(Duration(seconds: 0), () async {
+      try {
+        final response =
+            await http.get(todayMeetingURL, headers: {'ismobile': 'true'});
+        final data = json.decode(response.body) as Map<String, dynamic>;
+        if (response.statusCode == 200) {
+          meetings = MeetingByDate.fromJson(data);
+          setState(() => isLoading = false);
+        } else {
+          setState(() => isLoading = false);
+        }
+      } catch (e) {
+        setState(() => isLoading = false);
+      }
+    });
+    super.initState();
+  }
 
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
@@ -77,65 +105,101 @@ class _MeetingTabState extends State<MeetingTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            color: Colors.white,
-            child: ExpansionTile(
-              initiallyExpanded: isFirstTileOpened,
-              onExpansionChanged: (val) =>
-                  setState(() => isFirstTileOpened = val),
-              leading: CircleAvatar(
-                backgroundImage: AssetImage('assets/Artboard 12.png'),
-              ),
-              title: Text(
-                'United Kingdom',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize:
-                        ScreenUtil().setSp(18, allowFontScalingSelf: true),
-                    fontWeight: FontWeight.bold),
-              ),
-              trailing: Container(
-                height: ScreenUtil().setHeight(30),
-                width: ScreenUtil().setWidth(30),
-                color: Colors.blue[900],
-                child: Center(
-                  child: Icon(!isFirstTileOpened ? Icons.add : Icons.remove,
-                      color: Colors.grey, size: 30),
-                ),
-              ),
-              backgroundColor: Colors.white,
-              children: [tileExpansion(context)],
-            )),
-        SizedBox(height: ScreenUtil().setHeight(10)),
-        Container(
-            color: Colors.white,
-            child: ExpansionTile(
-              initiallyExpanded: isSecondTileOpened,
-              backgroundColor: Colors.white,
-              children: [tileExpansion(context)],
-              onExpansionChanged: (val) =>
-                  setState(() => isSecondTileOpened = val),
-              leading: CircleAvatar(
-                backgroundImage: AssetImage('assets/Artboard 12 copy.png'),
-              ),
-              title: Text(
-                'England',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize:
-                        ScreenUtil().setSp(18, allowFontScalingSelf: true),
-                    fontWeight: FontWeight.bold),
-              ),
-              trailing: Container(
-                height: ScreenUtil().setHeight(30),
-                width: ScreenUtil().setWidth(30),
-                color: Colors.blue[900],
-                child: Center(
-                  child: Icon(isSecondTileOpened ? Icons.remove : Icons.add,
-                      color: Colors.grey, size: 30),
-                ),
-              ),
-            )),
+        isLoading
+            ? Center(child: CircularProgressIndicator())
+            : ListView.separated(
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                itemCount: meetings.data.length,
+                separatorBuilder: (context, index) =>
+                    SizedBox(height: ScreenUtil().setHeight(5)),
+                itemBuilder: (context, index) {
+                  bool isTileOpen = false;
+                  return StatefulBuilder(
+                    builder: (context, state) => Container(
+                        color: Colors.white,
+                        child: ExpansionTile(
+                          initiallyExpanded: isTileOpen,
+                          onExpansionChanged: (val) =>
+                              state(() => isTileOpen = val),
+                          leading: CircleAvatar(
+                              child: Flag(meetings.data[index].flag)),
+                          title: Text(
+                            meetings.data[index].countryName,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: ScreenUtil()
+                                    .setSp(18, allowFontScalingSelf: true),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          trailing: Container(
+                            height: ScreenUtil().setHeight(30),
+                            width: ScreenUtil().setWidth(30),
+                            color: Colors.blue[900],
+                            child: Center(
+                              child: Icon(
+                                  !isTileOpen ? Icons.add : Icons.remove,
+                                  color: Colors.grey,
+                                  size: 30),
+                            ),
+                          ),
+                          backgroundColor: Colors.white,
+                          children: List.generate(
+                              meetings.data[0].meetingCodes.length,
+                              (i) => GestureDetector(
+                                    onTap: () => pushNewScreen(context,
+                                        screen: RacingScreen(
+                                          meetingCode: meetings.data[index]
+                                              .meetingCodes[i].meetingCode,
+                                        )),
+                                    child: Container(
+                                      width: devWidth,
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 15),
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 15, vertical: 10),
+                                      alignment: Alignment.center,
+                                      height: ScreenUtil().setHeight(50),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              Colors.grey[300].withOpacity(0.5),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                              meetings
+                                                  .data[index]
+                                                  .meetingCodes[i]
+                                                  .racecourseFullName,
+                                              style: TextStyle(
+                                                  color: Colors.blue,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: ScreenUtil().setSp(
+                                                      16,
+                                                      allowFontScalingSelf:
+                                                          true))),
+                                          Text(
+                                              meetings.data[index]
+                                                  .meetingCodes[i].raceTime,
+                                              style: TextStyle(
+                                                  color: Colors.blue,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: ScreenUtil().setSp(
+                                                      16,
+                                                      allowFontScalingSelf:
+                                                          true)))
+                                        ],
+                                      ),
+                                    ),
+                                  )),
+                        )),
+                  );
+                }),
         SizedBox(height: ScreenUtil().setHeight(5)),
         Container(
           width: double.infinity,

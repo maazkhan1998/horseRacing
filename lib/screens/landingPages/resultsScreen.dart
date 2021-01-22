@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mks_racing/provider/raceCardTodayProvider.dart';
 import 'package:mks_racing/screens/racingScreen/remainingRaceScreen.dart';
 import 'package:mks_racing/widgets/custom.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
 
 class ResultsScreen extends StatefulWidget {
   @override
@@ -24,7 +26,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomStaticWidget.formWidget(context),
+              RaceCardTodayWidget(
+                  Provider.of<RaceCardTodayProvider>(context, listen: false)
+                      .raceCardToday),
               SizedBox(height: ScreenUtil().setHeight(5)),
               Container(
                   color: Colors.white,

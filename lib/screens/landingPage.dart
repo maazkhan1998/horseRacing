@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mks_racing/provider/raceCardTodayProvider.dart';
 import 'package:mks_racing/screens/racingScreen/innerRacingScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
 
 import 'landingPages/competitionScreen.dart';
 import 'landingPages/homeScreen.dart';
@@ -18,10 +21,21 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   PersistentTabController _controller;
+  bool isLoading = true;
 
   @override
   void initState() {
     _controller = PersistentTabController(initialIndex: 0);
+    Future.delayed(Duration(seconds: 0), () async {
+      try {
+        await Provider.of<RaceCardTodayProvider>(context, listen: false)
+            .getTodayRaceCard();
+        setState(() => isLoading = false);
+      } catch (e) {
+        setState(() => isLoading = false);
+        return Fluttertoast.showToast(msg: e.toString());
+      }
+    });
     super.initState();
   }
 
@@ -30,12 +44,18 @@ class _LandingPageState extends State<LandingPage> {
     return PersistentTabView(
       controller: _controller,
       screens: [
-        HomeScreen(),
-        InnerRacingScreen(),
-        ResultsScreen(),
-        StatsScreen(),
-        CompetitionScreen(),
-        SettingScreen()
+        isLoading ? Center(child: CircularProgressIndicator()) : HomeScreen(),
+        isLoading
+            ? Center(child: CircularProgressIndicator())
+            : InnerRacingScreen(),
+        isLoading
+            ? Center(child: CircularProgressIndicator())
+            : ResultsScreen(),
+        isLoading ? Center(child: CircularProgressIndicator()) : StatsScreen(),
+        isLoading
+            ? Center(child: CircularProgressIndicator())
+            : CompetitionScreen(),
+        isLoading ? Center(child: CircularProgressIndicator()) : SettingScreen()
       ],
       items: [
         PersistentBottomNavBarItem(
