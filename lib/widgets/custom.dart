@@ -135,7 +135,7 @@ class _RaceCardTodayWidgetState extends State<RaceCardTodayWidget>
                                   horizontal: ScreenUtil().setWidth(10)),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.blue),
+                                  color: Colors.blue[200]),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:

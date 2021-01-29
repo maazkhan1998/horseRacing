@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:mks_racing/apiURL.dart';
 import 'package:mks_racing/model/countries.dart';
 import 'package:mks_racing/validator/validator.dart';
@@ -22,7 +23,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
   FocusNode emailNode = FocusNode();
@@ -40,6 +40,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Countries selectedCountry;
 
   CountriesAPI countries;
+
+  bool isValid = false;
+  PhoneNumber phoneNumber;
 
   selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -95,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           gravity: ToastGravity.BOTTOM,
           backgroundColor: Colors.grey[800],
           textColor: Colors.white);
-    if (phoneController.text.isEmpty)
+    if (!isValid)
       return Fluttertoast.showToast(
           msg: 'Incorrect phone number',
           gravity: ToastGravity.BOTTOM,
@@ -124,17 +127,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
             "lastName": lastNameController.text,
             "dateOfBirth": dob.toIso8601String(),
             "nationality": selectedCountry.id,
-            "contactNumber": phoneController.text,
+            "contactNumber": phoneNumber.phoneNumber,
             "email": emailController.text,
             "password": passController.text
           }));
       setState(() => isLoading = false);
       if (response.statusCode == 201) {
-        return Fluttertoast.showToast(
+        Fluttertoast.showToast(
             msg: 'User successfully created',
             gravity: ToastGravity.BOTTOM,
             backgroundColor: Colors.grey[800],
             textColor: Colors.white);
+        Navigator.of(context).pop();
       } else {
         final data = json.decode(response.body) as Map<String, dynamic>;
         return Fluttertoast.showToast(
@@ -246,7 +250,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: ScreenUtil().setHeight(50),
                   child: Center(
                     child: TextField(
-                      onSubmitted: (_) => emailNode.requestFocus(),
+                      onSubmitted: (_) => selectDate(context),
                       textInputAction: TextInputAction.next,
                       controller: lastNameController,
                       textAlignVertical: TextAlignVertical.center,
@@ -279,36 +283,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ScreenUtil().setSp(16, allowFontScalingSelf: true),
                         fontWeight: FontWeight.bold)),
                 SizedBox(height: ScreenUtil().setHeight(5)),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: ScreenUtil().setWidth(20)),
-                  width: double.infinity,
-                  height: ScreenUtil().setHeight(50),
-                  decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(5),
-                      boxShadow: [
-                        BoxShadow(color: Colors.grey[300], offset: Offset(2, 4))
-                      ]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      dob == null
-                          ? Text('Date of Birth',
-                              style: TextStyle(
-                                  fontSize: ScreenUtil().setSp(15),
-                                  color: Colors.grey[400],
-                                  fontWeight: FontWeight.w600))
-                          : Text(DateFormat('dd/MM/yyyy').format(dob),
-                              style: TextStyle(
-                                  fontSize: ScreenUtil().setSp(15),
-                                  color: Colors.grey[400],
-                                  fontWeight: FontWeight.w600)),
-                      GestureDetector(
-                          onTap: () => selectDate(context),
-                          child: Icon(Icons.calendar_today, color: Colors.grey))
-                    ],
+                GestureDetector(
+                  onTap: () => selectDate(context),
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().setWidth(20)),
+                    width: double.infinity,
+                    height: ScreenUtil().setHeight(50),
+                    decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey[300], offset: Offset(2, 4))
+                        ]),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        dob == null
+                            ? Text('Date of Birth',
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(15),
+                                    color: Colors.grey[400],
+                                    fontWeight: FontWeight.w600))
+                            : Text(DateFormat('dd/MM/yyyy').format(dob),
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(15),
+                                    color: Colors.grey[400],
+                                    fontWeight: FontWeight.w600)),
+                        Icon(Icons.calendar_today, color: Colors.grey)
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -383,27 +389,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ]),
                   width: double.infinity,
                   height: ScreenUtil().setHeight(50),
-                  child: Center(
-                    child: TextField(
-                      onSubmitted: (_) => passNode.requestFocus(),
-                      textInputAction: TextInputAction.next,
-                      controller: phoneController,
-                      keyboardType: TextInputType.phone,
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          hintText: '971569112334',
-                          hintStyle: TextStyle(
-                              color: Colors.grey[400],
-                              fontWeight: FontWeight.w600),
-                          suffixIcon: Icon(
-                            Icons.phone,
-                            color: Colors.grey,
-                          )),
+                  child: InternationalPhoneNumberInput(
+                    inputBorder: InputBorder.none,
+                    selectorConfig: SelectorConfig(
+                      selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                     ),
+                    onInputValidated: (valid) {
+                      isValid = valid;
+                    },
+                    onInputChanged: (number) {
+                      phoneNumber = number;
+                    },
                   ),
                 ),
               ],
